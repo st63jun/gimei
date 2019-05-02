@@ -3,6 +3,7 @@ require 'yaml'
 require 'gimei/version'
 require 'gimei/name'
 require 'gimei/address'
+require 'gimei/config'
 
 class Gimei
   extend Forwardable

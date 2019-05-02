@@ -17,7 +17,7 @@ class Gimei::Name
   end
 
   def initialize(gender = nil)
-    @gender = gender || Gimei::GENDER.sample
+    @gender = gender || Gimei::GENDER.sample(random: Gimei::Config.random)
     @first = First.new @gender
     @last = Last.new
   end
@@ -63,8 +63,8 @@ class Gimei::Name
     def_delegators :@name, :kanji, :hiragana, :katakana, :to_s, :romaji
 
     def initialize(gender = nil)
-      @gender = gender || Gimei::GENDER.sample
-      @name = NameWord.new(Gimei::NAMES['first_name'][@gender.to_s].sample)
+      @gender = gender || Gimei::GENDER.sample(random: Gimei::Config.random)
+      @name = NameWord.new(Gimei::NAMES['first_name'][@gender.to_s].sample(random: Gimei::Config.random))
     end
 
     def male?
@@ -81,7 +81,7 @@ class Gimei::Name
     def_delegators :@name, :kanji, :hiragana, :katakana, :to_s, :romaji
 
     def initialize
-      @name = NameWord.new(Gimei::NAMES['last_name'].sample)
+      @name = NameWord.new(Gimei::NAMES['last_name'].sample(random: Gimei::Config.random))
     end
   end
 
